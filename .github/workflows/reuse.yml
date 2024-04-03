@@ -6,6 +6,7 @@ on:
 jobs:
   call-workflow:
       uses: ./.github/workflows/reusable.yml
+      id: call-workflow
       with:
         who-to-greet: '@cody-carlson'
 
