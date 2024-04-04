@@ -1,0 +1,39 @@
+name: Matrix Workflow
+
+on:
+    pull_request:
+      branches:
+      - main
+    workflow_dispatch:
+
+jobs:
+  matrix_job:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        include:
+          - os: ubuntu-latest
+            node: 12
+            id: 1
+          - os: windows-latest
+            node: 14
+            id: 2
+          - os: macOS-latest
+            node: 16
+            id: 3
+    steps:
+      # Your steps here
+
+      - name: Set output
+        id: matrix_outputs
+        run: |
+          echo "::set-output name=os${{ matrix.id }}::${{ matrix.os }}"
+          echo "::set-output name=node${{ matrix.id }}::${{ matrix.node }}"
+
+    outputs:
+      matrix_os1: ${{ steps.matrix_outputs.outputs.os1 }}
+      matrix_node1: ${{ steps.matrix_outputs.outputs.node1 }}
+      matrix_os2: ${{ steps.matrix_outputs.outputs.os2 }}
+      matrix_node2: ${{ steps.matrix_outputs.outputs.node2 }}
+      matrix_os3: ${{ steps.matrix_outputs.outputs.os3 }}
+      matrix_node3: ${{ steps.matrix_outputs.outputs.node3 }}
