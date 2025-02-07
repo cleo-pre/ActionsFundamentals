@@ -18,7 +18,7 @@ on:
 
 jobs:
   Build:
-    runs-on: hon-gh-ubuntu-20.04
+    runs-on: ubuntu-20.04
     steps:
       - run: |
           echo ":tada: The job was triggered by event: ${{ github.event_name }}"
