@@ -32,7 +32,7 @@ jobs:
           echo "The repository ${{ github.repository }} contains the following files"
           tree
   Test:
-    runs-on: ubuntu-latest
+    runs-on: hon-gh-ubuntu-20.04
     needs: Build
     if: github.event_name == 'workflow_dispatch'
     environment: Test
